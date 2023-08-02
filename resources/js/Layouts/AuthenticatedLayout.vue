@@ -37,7 +37,10 @@ const showingNavigationDropdown = ref(false);
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <!-- Settings Dropdown -->
-                            <div class="ml-3 relative">
+                            <div class="ml-3 relative flex">
+                                <select name="" id="">
+                                    <option value="" :selected="language.value === $page.props.language" v-for="language in $page.props.languages" :key="language.value">{{language.label}}</option>
+                                </select>
                                 <Dropdown align="right" width="48">
                                     <template #trigger>
                                         <span class="inline-flex rounded-md">
