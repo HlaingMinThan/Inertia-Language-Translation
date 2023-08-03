@@ -6,7 +6,7 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
-
+import {router} from '@inertiajs/vue3';
 const showingNavigationDropdown = ref(false);
 </script>
 
@@ -38,8 +38,8 @@ const showingNavigationDropdown = ref(false);
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative flex">
-                                <select name="" id="">
-                                    <option value="" :selected="language.value === $page.props.language" v-for="language in $page.props.languages" :key="language.value">{{language.label}}</option>
+                                <select name="" id="" @change="router.post(route('language.store'),{language : $event.target.value})">
+                                    <option :value="language.value" :selected="language.value === $page.props.language" v-for="language in $page.props.languages" :key="language.value">{{language.label}}</option>
                                 </select>
                                 <Dropdown align="right" width="48">
                                     <template #trigger>
