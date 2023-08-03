@@ -40,11 +40,13 @@ class HandleInertiaRequests extends Middleware
             ],
             'language' => app()->getLocale(),
             'translations' => function () {
-                return collect(File::files(lang_path('/' . app()->getLocale())))->flatMap(function ($file) {
-                    return Arr::dot(
-                        File::getRequire($file->getRealPath()),
-                        $file->getBasename($file->getExtension())
-                    );
+                return cache()->remember('translations' . app()->getLocale(), now()->addMinutes(2), function () {
+                    return collect(File::files(lang_path('/' . app()->getLocale())))->flatMap(function ($file) {
+                        return Arr::dot(
+                            File::getRequire($file->getRealPath()),
+                            $file->getBasename($file->getExtension())
+                        );
+                    });
                 });
             },
             'languages' => LanguageResource::collection(Language::cases()),
