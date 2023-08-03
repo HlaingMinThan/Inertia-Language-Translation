@@ -45,8 +45,8 @@ const updatePassword = () => {
 
         <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
             <div>
-                <InputLabel for="current_password" value="Current Password" />
-
+                <!-- <InputLabel for="current_password" value="Current Password" /> -->
+                <label for="">{{__('profile.update_pw.current_pw',{name : 'hmt' , age : 20})}}</label>
                 <TextInput
                     id="current_password"
                     ref="currentPasswordInput"

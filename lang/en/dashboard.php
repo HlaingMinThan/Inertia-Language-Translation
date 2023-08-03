@@ -2,7 +2,7 @@
 
 return [
     'greetings' => [
-        'welcome' =>  "Mingalar Par :name, A tak ka :age par",
+        'welcome' =>  "Welcome :name, My age is :age.",
         'hello' => "Hay Kaung"
     ]
 ];
